@@ -1,1 +1,1 @@
-# Development-Manual.github.io
+page: [开发手册](https://aries-young.github.io/Development-Manual.github.io/)
