@@ -199,6 +199,43 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x5173;&#x4E8E;-python-&#x7684;&#x4F7F;&#x7528;">&#x5173;&#x4E8E; Python &#x7684;&#x4F7F;&#x7528;</h1>
+<h2 id="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;&#x2014;&#x2014;-pathlib">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;&#x2014;&#x2014; pathlib</h2>
+<h3 id="&#x5C06;-pathlibpath-&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;">&#x5C06; pathlib.Path &#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">with</span> open(pic_name, <span class="hljs-string">&apos;wb&apos;</span>) <span class="hljs-keyword">as</span> image:
+    image.write(download.content)
+    image_path = Path(pic_name).resolve()
+    <span class="hljs-keyword">return</span> image_path
+</code></pre>
+<p>&#x5F53;&#x6211;&#x6253;&#x5370; <code>image_path</code> &#x65F6;&#xFF0C;&#x6211;&#x5F97;&#x5230;&#x4E86;&#x56FE;&#x50CF;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</p>
+<h3 id="&#x5E38;&#x7528;&#x5C5E;&#x6027;">&#x5E38;&#x7528;&#x5C5E;&#x6027;</h3>
+<pre><code class="lang-python">p.name        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x540D;&#xFF0C;str</span>
+p.stem        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E0D;&#x5E26;&#x540E;&#x7F00;&#xFF0C;str</span>
+p.suffix    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x540E;&#x7F00;&#xFF0C;str&#xFF0C;&#x5982;&apos;.jpg&apos;</span>
+p.parent    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x7236;&#x7EA7;&#x76EE;&#x5F55;&#xFF0C;WindowsPath</span>
+p.parents    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x7236;&#x7EA7;&#x76EE;&#x5F55;&#x5217;&#x8868;&#xFF0C;[WindowsPath]</span>
+p.parts        <span class="hljs-comment">#&#x62C6;&#x5206;&#x8DEF;&#x5F84;&#xFF0C;(str)&#x5143;&#x7EC4;&#xFF0C;&#x5982;(&apos;E:\\&apos;, &apos;20200907&apos;, &apos;ImgFloder&apos;, &apos;0_right.jpg&apos;)</span>
+p.drive        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76D8;&#x7B26;&#xFF0C;str&#xFF0C;&#x5982;&apos;E:&apos;</span>
+p.root        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x6839;&#x76EE;&#x5F55;&#xFF0C;str&#xFF0C;&#x5982;&apos;//&apos;</span>
+p.anchor    <span class="hljs-comment">#&#x81EA;&#x52A8;&#x5224;&#x65AD;&#x97E9;&#x6167;root&#x6216;drive</span>
+</code></pre>
+<h3 id="&#x5E38;&#x7528;&#x65B9;&#x6CD5;">&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
+<pre><code class="lang-python">p.open()    <span class="hljs-comment">#&#x901A;&#x5E38;&#x7528;open(p,mode)&#x65B9;&#x5F0F;</span>
+p.mkdir()    <span class="hljs-comment">#&#x521B;&#x5EFA;&#x76EE;&#x5F55;</span>
+p.cwd()        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;&#x8DEF;&#x5F84;&#x5BF9;&#x8C61;</span>
+p.stat()    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x4FE1;&#x606F;</span>
+p.home()    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;&#x6839;&#x76EE;&#x5F55;</span>
+p.with_name()    <span class="hljs-comment">#&#x66F4;&#x6539;&#x6700;&#x540E;&#x4E00;&#x7EA7;&#x8DEF;&#x52B2;&#x540D;</span>
+p.with_suffix()    <span class="hljs-comment">#&#x66F4;&#x6539;&#x540E;&#x7F00;</span>
+p.is_absolute()    <span class="hljs-comment">#&#x662F;&#x5426;&#x662F;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</span>
+p.is_reserved()    <span class="hljs-comment">#&#x662F;&#x5426;&#x662F;&#x9884;&#x7559;&#x8DEF;&#x5F84;</span>
+</code></pre>
+<h2 id="&#x63A7;&#x5236;&#x6D6E;&#x70B9;&#x6570;&#x8F93;&#x51FA;">&#x63A7;&#x5236;&#x6D6E;&#x70B9;&#x6570;&#x8F93;&#x51FA;</h2>
+<pre><code class="lang-python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    a = <span class="hljs-number">3.1415926</span>
+    print(round(a, <span class="hljs-number">4</span>)) <span class="hljs-comment"># print(f&quot;a = {round(a, 4)}&quot;)</span>
+    print(<span class="hljs-string">&quot;%.2f&quot;</span> % a)
+    print(<span class="hljs-string">&quot;{:.3f}&quot;</span>.format(a))
+</code></pre>
 <h2 id="map">map</h2>
 <p><code>map()</code> &#x4F1A;&#x6839;&#x636E;&#x63D0;&#x4F9B;&#x7684;&#x51FD;&#x6570;&#x5BF9;&#x6307;&#x5B9A;&#x5E8F;&#x5217;&#x505A;&#x6620;&#x5C04;</p>
 <pre><code class="lang-python">map(function, iterable, ...)
@@ -1641,6 +1678,32 @@ print(m2(inputs))
         <span class="hljs-keyword">return</span> F.dropout(x, training=self.training)
 </code></pre>
 <h1 id="&#x5173;&#x4E8E;-tricks-&#x5B9E;&#x73B0;">&#x5173;&#x4E8E; tricks &#x5B9E;&#x73B0;</h1>
+<h2 id="&#x8BFB;&#x53D6;&#x89C6;&#x9891;&#x957F;&#x5EA6;">&#x8BFB;&#x53D6;&#x89C6;&#x9891;&#x957F;&#x5EA6;</h2>
+<p><strong>&#x6B63;&#x5E38;&#x5927;&#x5C0F;&#x89C6;&#x9891;</strong></p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> cv2
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_video_duration</span><span class="hljs-params">(filename)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    python&#x83B7;&#x53D6;&#x89C6;&#x9891;&#x6587;&#x4EF6;&#x65F6;&#x957F;
+    &quot;&quot;&quot;</span>
+    cap = cv2.VideoCapture(filename)
+    <span class="hljs-keyword">if</span> cap.isOpened():
+        rate = cap.get(<span class="hljs-number">5</span>)
+        frame_num =cap.get(<span class="hljs-number">7</span>)
+        duration = frame_num/rate  
+        <span class="hljs-keyword">return</span> duration
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+</code></pre>
+<p><strong>&#x8D85;&#x957F;&#x89C6;&#x9891;</strong></p>
+<p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x4F1A;&#x51FA;&#x73B0;&#x8BFB;&#x53D6;&#x7684;&#x89C6;&#x9891;&#x65F6;&#x957F;&#x5728;&#x4E00;&#x4E24;&#x4E2A;&#x5C0F;&#x65F6;&#x5DE6;&#x53F3;&#xFF0C;&#x8FD9;&#x79CD;&#x89C6;&#x9891;&#x7684;&#x8BFB;&#x53D6;&#x5C31;&#x4E0D;&#x80FD;&#x91C7;&#x7528;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A; <code>frame_num =cap.get(7)</code> &#x8FD9;&#x4E00;&#x6B65;&#x4F1A;&#x56E0;&#x4E3A;&#x8BFB;&#x53D6;&#x7684;&#x5E27;&#x8FC7;&#x591A;&#x800C;&#x5F15;&#x53D1;&#x5982;&#x4E0B;&#x7684;&#x9519;&#x8BEF;</p>
+<pre><code>[mov,mp4,m4a,3gp,3g2,mj2 @ 0x558dd14af680] Referenced QT chapter track not f
+</code></pre><p>&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> moviepy.editor <span class="hljs-keyword">import</span> VideoFileClip
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_long_video_duration</span><span class="hljs-params">(path)</span>:</span>
+    clip = VideoFileClip(path)
+    <span class="hljs-keyword">return</span> clip.duration
+</code></pre>
 <h2 id="&#x521D;&#x59CB;&#x5316;&#x6A21;&#x578B;&#x53C2;&#x6570;">&#x521D;&#x59CB;&#x5316;&#x6A21;&#x578B;&#x53C2;&#x6570;</h2>
 <p><strong>&#x65B9;&#x6CD5;&#x4E00;</strong></p>
 <p>&#x5148;&#x5B9A;&#x4E49;&#x521D;&#x59CB;&#x5316;&#x6A21;&#x578B;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD0;&#x7528; <code>apply()</code></p>
@@ -2068,7 +2131,7 @@ writer.close()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part One. Python 开发手册","level":"1.2","depth":1,"next":{"title":"Part One. Linux 开发手册","level":"1.3","depth":1,"path":"【开发手册】Linux.md","ref":"【开发手册】Linux.md","articles":[]},"previous":{"title":"Part Zero. Introduction ","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","expandable-chapters","copy-code-button","flexible-alerts","-lunr","-search","search-pro","mathjax-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"CORE CONTENT"},"note":{"className":"info","icon":"fa fa-info-circle","label":"NOTE"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"TIPS"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"SUPPLEMENT"}},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"langaue":"zh-hans","theme":"default","author":"aries-yhf","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"开发手册","gitbook":"*","description":"python、linux"},"file":{"path":"【开发手册】Python.md","mtime":"2022-09-13T09:15:55.945Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-17T13:53:43.732Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part One. Python 开发手册","level":"1.2","depth":1,"next":{"title":"Part One. Linux 开发手册","level":"1.3","depth":1,"path":"【开发手册】Linux.md","ref":"【开发手册】Linux.md","articles":[]},"previous":{"title":"Part Zero. Introduction ","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","expandable-chapters","copy-code-button","flexible-alerts","-lunr","-search","search-pro","mathjax-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"CORE CONTENT"},"note":{"className":"info","icon":"fa fa-info-circle","label":"NOTE"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"TIPS"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"SUPPLEMENT"}},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"langaue":"zh-hans","theme":"default","author":"aries-yhf","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"开发手册","gitbook":"*","description":"python、linux"},"file":{"path":"【开发手册】Python.md","mtime":"2022-09-19T08:29:51.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-19T08:33:57.816Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
