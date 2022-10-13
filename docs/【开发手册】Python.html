@@ -199,15 +199,54 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x5173;&#x4E8E;-python-&#x7684;&#x4F7F;&#x7528;">&#x5173;&#x4E8E; Python &#x7684;&#x4F7F;&#x7528;</h1>
+<h2 id="&#x5B57;&#x7B26;&#x4E32;&#x8865;&#x5168;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;">&#x5B57;&#x7B26;&#x4E32;&#x8865;&#x5168;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;</h2>
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&apos;789&apos;</span>.ljust(<span class="hljs-number">5</span>, <span class="hljs-string">&apos;0&apos;</span>)
+<span class="hljs-string">&apos;78900&apos;</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&apos;789&apos;</span>.rjust(<span class="hljs-number">5</span>, <span class="hljs-string">&apos;0&apos;</span>)
+<span class="hljs-string">&apos;00789&apos;</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&apos;789&apos;</span>.zfill(<span class="hljs-number">5</span>)
+<span class="hljs-string">&apos;00789&apos;</span>
+</code></pre>
+<h2 id="&#x5BF9;&#x5217;&#x8868;&#x7684;&#x5FEB;&#x901F;&#x7B49;&#x5206;">&#x5BF9;&#x5217;&#x8868;&#x7684;&#x5FEB;&#x901F;&#x7B49;&#x5206;</h2>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> math
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">chunk1</span><span class="hljs-params">(l,chunk_size)</span>:</span>
+    <span class="hljs-keyword">return</span> list(map(<span class="hljs-keyword">lambda</span> x:l[x*chunk_size:(x+<span class="hljs-number">1</span>)*chunk_size],range(<span class="hljs-number">0</span>,math.ceil(len(l)/chunk_size)))
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">chunk2</span><span class="hljs-params">(l,chunk_size)</span>:</span>
+    <span class="hljs-keyword">return</span> [l[x:x + chunk_size] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,len(l),chunk_size)]
+
+
+l=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]
+chunk1(l,<span class="hljs-number">3</span>)
+[out]:
+[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">9</span>]]
+
+chunk2(l,<span class="hljs-number">4</span>)
+[out]:
+[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">8</span>, <span class="hljs-number">9</span>]]
+</code></pre>
+<h2 id="oswalk">os.walk</h2>
+<p><code>os.walk()</code> &#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5728;&#x76EE;&#x5F55;&#x6811;&#x4E2D;&#x6E38;&#x8D70;&#x8F93;&#x51FA;&#x5728;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5411;&#x4E0A;&#x6216;&#x8005;&#x5411;&#x4E0B;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(<span class="hljs-string">&quot;.&quot;</span>, topdown=<span class="hljs-keyword">False</span>):
+    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> files:
+        print(os.path.join(root, name))
+    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> dirs:
+        print(os.path.join(root, name))
+</code></pre>
 <h2 id="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;&#x2014;&#x2014;-pathlib">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;&#x2014;&#x2014; pathlib</h2>
-<h3 id="&#x5C06;-pathlibpath-&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;">&#x5C06; pathlib.Path &#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;</h3>
+<p><strong>&#x5C06; pathlib.Path &#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;</strong></p>
 <pre><code class="lang-python"><span class="hljs-keyword">with</span> open(pic_name, <span class="hljs-string">&apos;wb&apos;</span>) <span class="hljs-keyword">as</span> image:
     image.write(download.content)
     image_path = Path(pic_name).resolve()
     <span class="hljs-keyword">return</span> image_path
 </code></pre>
 <p>&#x5F53;&#x6211;&#x6253;&#x5370; <code>image_path</code> &#x65F6;&#xFF0C;&#x6211;&#x5F97;&#x5230;&#x4E86;&#x56FE;&#x50CF;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</p>
-<h3 id="&#x5E38;&#x7528;&#x5C5E;&#x6027;">&#x5E38;&#x7528;&#x5C5E;&#x6027;</h3>
+<p><strong>&#x5E38;&#x7528;&#x5C5E;&#x6027;</strong></p>
 <pre><code class="lang-python">p.name        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x540D;&#xFF0C;str</span>
 p.stem        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E0D;&#x5E26;&#x540E;&#x7F00;&#xFF0C;str</span>
 p.suffix    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x540E;&#x7F00;&#xFF0C;str&#xFF0C;&#x5982;&apos;.jpg&apos;</span>
@@ -218,7 +257,7 @@ p.drive        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x76EE;&#x5F55;&#x62
 p.root        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x6839;&#x76EE;&#x5F55;&#xFF0C;str&#xFF0C;&#x5982;&apos;//&apos;</span>
 p.anchor    <span class="hljs-comment">#&#x81EA;&#x52A8;&#x5224;&#x65AD;&#x97E9;&#x6167;root&#x6216;drive</span>
 </code></pre>
-<h3 id="&#x5E38;&#x7528;&#x65B9;&#x6CD5;">&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
+<p><strong>&#x5E38;&#x7528;&#x65B9;&#x6CD5;</strong></p>
 <pre><code class="lang-python">p.open()    <span class="hljs-comment">#&#x901A;&#x5E38;&#x7528;open(p,mode)&#x65B9;&#x5F0F;</span>
 p.mkdir()    <span class="hljs-comment">#&#x521B;&#x5EFA;&#x76EE;&#x5F55;</span>
 p.cwd()        <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;&#x8DEF;&#x5F84;&#x5BF9;&#x8C61;</span>
@@ -501,7 +540,17 @@ print(df)
 </code></pre><p>csv &#x6587;&#x4EF6;&#x9ED8;&#x8BA4;&#x7684;&#x662F;&#x4EE5;&#x9017;&#x53F7;&#x4E3A;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x4F46;&#x662F;&#x4E2D;&#x6587;&#x4E2D;&#x9017;&#x53F7;&#x7684;&#x4F7F;&#x7528;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x722C;&#x53D6;&#x4E2D;&#x6587;&#x6570;&#x636E;&#x65F6;&#x5C31;&#x5BB9;&#x6613;&#x9020;&#x6210;&#x6DF7;&#x6DC6;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528; pandas &#x5199;&#x5165; csv &#x65F6;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x53C2;&#x6570; <code>sep=&#x2019;\t&#x2019;</code> &#xFF0C;&#x5373;&#x4EE5; tab &#x4E3A;&#x5206;&#x9694;&#x7B26;&#x5199;&#x5165;&#x3002;&#x6BD5;&#x7ADF; tab &#x5728;&#x4E2D;&#x6587;&#x4E60;&#x60EF;&#x91CC;&#x7528;&#x7684;&#x5F88;&#x5C11;&#x3002;&#x90A3;&#x8FD9;&#x6837;&#x5728;&#x540E;&#x9762;&#x8BFB;&#x53D6; csv &#x8FDB;&#x884C;&#x6570;&#x636E;&#x5904;&#x7406;&#x65F6;&#xFF0C;&#x4E00;&#x5B9A;&#x8BB0;&#x5F97;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x53C2;&#x6570; delimiter</p>
 <pre><code class="lang-python">df=pd.read_csv(<span class="hljs-string">&apos;path&apos;</span>,delimiter=<span class="hljs-string">&quot;\t&quot;</span>)
 </code></pre>
-<h3 id="&#x5C06;-dateframe-&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x5178;">&#x5C06; DateFrame &#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x5178;</h3>
+<h3 id="&#x5C06;&#x5B57;&#x5178;&#x8F6C;&#x6362;&#x4E3A;-dateframe">&#x5C06;&#x5B57;&#x5178;&#x8F6C;&#x6362;&#x4E3A; DateFrame</h3>
+<pre><code class="lang-python">d = {<span class="hljs-string">&apos;one&apos;</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">&apos;two&apos;</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
+df = pd.DataFrame(d,index=[<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>])
+print(df)
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<pre><code>      one  two
+ a    1    1
+ b    2    2
+ c    3    3
+</code></pre><h3 id="&#x5C06;-dateframe-&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x5178;">&#x5C06; DateFrame &#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x5178;</h3>
 <pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>df = pd.DataFrame({<span class="hljs-string">&apos;a&apos;</span>: [<span class="hljs-string">&apos;red&apos;</span>, <span class="hljs-string">&apos;yellow&apos;</span>, <span class="hljs-string">&apos;blue&apos;</span>], <span class="hljs-string">&apos;b&apos;</span>: [<span class="hljs-number">0.5</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.125</span>]})
 <span class="hljs-meta">&gt;&gt;&gt; </span>df
         a      b
@@ -717,7 +766,37 @@ data = np.load(<span class="hljs-string">&apos;xxx.npy&apos;</span>)
 for i in range(10):
     print(f&quot;\r count number: {i}&quot;, end=&quot;&quot;)
     time.sleep(1)
-</code></pre><h1 id="&#x5173;&#x4E8E;-pytorch-&#x4F7F;&#x7528;">&#x5173;&#x4E8E; Pytorch &#x4F7F;&#x7528;</h1>
+</code></pre><h1 id="&#x5173;&#x4E8E;-numpy-&#x7684;&#x4F7F;&#x7528;">&#x5173;&#x4E8E; Numpy &#x7684;&#x4F7F;&#x7528;</h1>
+<h2 id="array-&#x5347;&#x7EF4;">array &#x5347;&#x7EF4;</h2>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np     
+arr = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])
+print(arr.shape)       <span class="hljs-comment"># (2, 3)</span>
+
+arr_1 = arr[:, :, <span class="hljs-keyword">None</span>]
+print(arr_1.shape)      <span class="hljs-comment"># (2, 3, 1)</span>
+
+arr_2 = arr[:, <span class="hljs-keyword">None</span>, :]
+print(arr_2.shape)      <span class="hljs-comment"># (2, 1, 3)</span>
+</code></pre>
+<h2 id="array-&#x62FC;&#x63A5;">array &#x62FC;&#x63A5;</h2>
+<ul>
+<li><p><code>np.concatenate</code> &#x51FD;&#x6570;&#xFF0C;axis &#x4E3A; 0 &#x65F6;&#xFF0C;&#x6309;&#x884C;&#x62FC;&#x63A5;&#xFF0C;&#x4E3A; 1 &#x65F6;&#x6309;&#x5217;&#x62FC;&#x63A5;&#x3002;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">np.concatenate([a,b],axis=<span class="hljs-number">0</span>)
+</code></pre>
+</li>
+<li><p><code>np.vstack</code> &#x4E0E; <code>np.hstack</code> &#x51FD;&#x6570;&#xFF0C;<code>np.vstack</code> &#x6309;&#x884C;&#x62FC;&#x63A5;&#xFF0C;<code>np.hstack</code> &#x6309;&#x5217;&#x62FC;&#x63A5;&#x3002;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">  np.vstack([a,b])
+  np.hstack([a,b])
+</code></pre>
+</li>
+<li><p><code>np.r_</code> &#x4E0E; <code>np.c_</code> &#x51FD;&#x6570;&#xFF0C;<code>np.r_</code> &#x6309;&#x884C;&#x62FC;&#x63A5;&#xFF0C;<code>np.c_</code>&#x6309;&#x5217;&#x62FC;&#x63A5;&#x3002;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">  np.r_[a,b]
+  np.c_[a,b]
+</code></pre>
+</li>
+</ul>
+<h2 id="nptile">np.tile</h2>
+<h1 id="&#x5173;&#x4E8E;-pytorch-&#x4F7F;&#x7528;">&#x5173;&#x4E8E; Pytorch &#x4F7F;&#x7528;</h1>
 <h2 id="&#x6253;&#x5370;&#x5B8C;&#x6574;&#x7684;&#x5411;&#x91CF;">&#x6253;&#x5370;&#x5B8C;&#x6574;&#x7684;&#x5411;&#x91CF;</h2>
 <p>numpy &#x6253;&#x5370;&#x524D;&#x6DFB;&#x52A0;</p>
 <pre><code class="lang-python">np.set_printoptions(threshold=np.inf)
@@ -1114,7 +1193,8 @@ tensor(<span class="hljs-number">7.</span>) <span class="hljs-comment"># 2*2+3=7
 </li>
 <li><p><strong>tensor.expand</strong> &#x6269;&#x5927;&#x5F20;&#x91CF;</p>
 <p>&#x8FD4;&#x56DE;&#x5F20;&#x91CF;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x89C6;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x5F20;&#x91CF;&#x7684;&#x5355;&#x4E2A;&#x7EF4;&#x5EA6;&#x6269;&#x5927;&#x4E3A;&#x66F4;&#x5927;&#x7684;&#x5C3A;&#x5BF8;&#xFF0C;&#x65B0;&#x589E;&#x52A0;&#x7684;&#x7EF4;&#x5EA6;&#x5C06;&#x9644;&#x5728;&#x524D;&#x9762;&#xFF0C;&#x6269;&#x5927;&#x5F20;&#x91CF;&#x4E0D;&#x9700;&#x8981;&#x5206;&#x914D;&#x65B0;&#x5185;&#x5B58;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;&#x7684;&#x89C6;&#x56FE;</p>
-<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>x = torch.tensor([[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], [<span class="hljs-number">3</span>]])
+<p><code>torch.expand()</code>&#xFF0C;&#x53EA;&#x80FD;&#x628A;&#x7EF4;&#x5EA6;&#x4E3A; 1 &#x7684;&#x62D3;&#x5C55;&#x6210;&#x6307;&#x5B9A;&#x7EF4;&#x5EA6;&#x3002;&#x5982;&#x679C;&#x54EA;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E3A;-1&#xFF0C;&#x5C31;&#x662F;&#x8BE5;&#x7EF4;&#x5EA6;&#x4E0D;&#x53D8;</p>
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>x = torch.tensor([[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], [<span class="hljs-number">3</span>]]) <span class="hljs-comment"># torch.Size([3, 1])</span>
 <span class="hljs-meta">&gt;&gt;&gt; </span>x = x.expand(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
 
 tensor([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],
@@ -1122,8 +1202,8 @@ tensor([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span
         [<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>]])
 </code></pre>
 <p>&#x4E0E;&#x6B64;&#x7C7B;&#x4F3C;&#x7684;&#x8FD8;&#x6709; <strong>tensor.expand_as</strong></p>
-<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = torch.tensor([[<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>]])
-<span class="hljs-meta">&gt;&gt;&gt; </span>b = torch.tensor([[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]])
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = torch.tensor([[<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>]]) <span class="hljs-comment"># torch.Size([3, 1])</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>b = torch.tensor([[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]]) <span class="hljs-comment"># torch.Size([3, 2])</span>
 <span class="hljs-meta">&gt;&gt;&gt; </span>a.expand_as(b)
 
 tensor([[<span class="hljs-number">2</span>, <span class="hljs-number">2</span>],
@@ -1998,7 +2078,7 @@ Forward/backward pass size (MB): 8.38
 Params size (MB): 233.08
 Estimated Total Size (MB): 242.03
 ----------------------------------------------------------------
-</code></pre><h2 id="tensorboardx">TensorboardX</h2>
+</code></pre><h2 id="tensorboard">Tensorboard</h2>
 <p><strong>PyTorch &#x6BD4;&#x8F83;&#x9AD8;&#x4E00;&#x70B9;&#x7684;&#x7248;&#x672C;&#x90FD;&#x96C6;&#x6210;&#x4E86; tensorboard&#xFF0C;&#x4F7F;&#x7528;</strong> <code>from torch.utils.tensorboard import SummaryWriter</code> <strong>&#x5373;&#x53EF;</strong></p>
 <p>TensorboardX &#x4F7F;&#x5F97; TensorFlow &#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#xFF08;&#x5982;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684; PyTorch&#xFF09;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5230; Tensorboard &#x7684;&#x4FBF;&#x6377;&#x529F;&#x80FD;</p>
 <p>&#x8981;&#x4F7F;&#x7528; TensorboardX  &#x9996;&#x5148;&#x5C31;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; SummaryWriter&#xFF0C;&#x4E0B;&#x9762;&#x5C55;&#x793A;&#x4E86;&#x4E09;&#x79CD;&#x521D;&#x59CB;&#x5316; SummaryWriter &#x7684;&#x65B9;&#x6CD5;</p>
@@ -2088,6 +2168,13 @@ writer.add_embedding(features, metadata=label, label_img=images.unsqueeze(<span 
 writer.export_scalars_to_json(<span class="hljs-string">&quot;./all_scalars.json&quot;</span>)
 writer.close()
 </code></pre>
+<h1 id="&#x7B2C;&#x4E09;&#x65B9;&#x5DE5;&#x5177;">&#x7B2C;&#x4E09;&#x65B9;&#x5DE5;&#x5177;</h1>
+<h2 id="plotly">plotly</h2>
+<p><a href="https://plotly.com/python/" target="_blank">&#x5B98;&#x7F51;</a></p>
+<h2 id="altair">Altair</h2>
+<p><a href="https://altair-viz.github.io/index.html" target="_blank">&#x5B98;&#x7F51;</a></p>
+<h2 id="streamlit">Streamlit</h2>
+<p><a href="https://docs.streamlit.io/" target="_blank">&#x5B98;&#x7F51;</a></p>
 
                                 
                                 </section>
@@ -2131,7 +2218,7 @@ writer.close()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part One. Python 开发手册","level":"1.2","depth":1,"next":{"title":"Part One. Linux 开发手册","level":"1.3","depth":1,"path":"【开发手册】Linux.md","ref":"【开发手册】Linux.md","articles":[]},"previous":{"title":"Part Zero. Introduction ","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","expandable-chapters","copy-code-button","flexible-alerts","-lunr","-search","search-pro","mathjax-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"CORE CONTENT"},"note":{"className":"info","icon":"fa fa-info-circle","label":"NOTE"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"TIPS"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"SUPPLEMENT"}},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"langaue":"zh-hans","theme":"default","author":"aries-yhf","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"开发手册","gitbook":"*","description":"python、linux"},"file":{"path":"【开发手册】Python.md","mtime":"2022-09-19T08:29:51.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-19T08:33:57.816Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part One. Python 开发手册","level":"1.2","depth":1,"next":{"title":"Part One. Linux 开发手册","level":"1.3","depth":1,"path":"【开发手册】Linux.md","ref":"【开发手册】Linux.md","articles":[]},"previous":{"title":"Part Zero. Introduction ","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","expandable-chapters","copy-code-button","flexible-alerts","-lunr","-search","search-pro","mathjax-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"CORE CONTENT"},"note":{"className":"info","icon":"fa fa-info-circle","label":"NOTE"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"TIPS"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"SUPPLEMENT"}},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"langaue":"zh-hans","theme":"default","author":"aries-yhf","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"开发手册","gitbook":"*","description":"python、linux"},"file":{"path":"【开发手册】Python.md","mtime":"2022-10-13T08:06:44.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-13T08:42:10.375Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
